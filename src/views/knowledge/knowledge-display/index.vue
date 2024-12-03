@@ -75,7 +75,9 @@ export default {
     },
     draw () {
       this.viz = new NeoVis(config)
+      // console.log('实例化成功')
       this.viz.render()
+      // console.log("渲染")
       // 点击完搜索全图之后 才能开启搜索功能
       this.isClicked = false
     }

@@ -50,7 +50,13 @@ export default {
         function: { // everything here will map function thats gets the neo4j node properties to a vis.js node property
           // title: NeoVis.objectToTitleHtml, // alternativly
           label: (props) => (NeoVis.objectToTitleString(props, ['name'])).slice(5, 15) + '...',
-          image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
+          // image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
+          image: (props) => {
+            const result = /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])));
+            // console.log(Array.isArray(result))
+            // console.log('static/image-ourself/'+result);
+            return result && result.length > 0 ? 'static/image-ourself/'+result[0] : '';
+          }
         },
         static: { // everything here will be copied directly to the vis.js's node object
           font: {
