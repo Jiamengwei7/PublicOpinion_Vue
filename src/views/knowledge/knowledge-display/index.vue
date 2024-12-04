@@ -25,7 +25,7 @@
             </el-col>
             <el-col :span="6">
               <el-form-item class="btn">
-                  <el-button :disabled="isClicked" type="primary" icon="el-icon-search" @click="submit">搜索</el-button>
+                  <el-button :disabled="isClicked" type="primary" icon="el-icon-search" @click="submit">运行</el-button>
                   <el-button type="primary" icon="el-icon-check" @click="draw">获取样图</el-button>
                   <!-- <el-button type="primary" icon="el-icon-check" @click="stabilize">stabilize</el-button> -->
               </el-form-item>
@@ -75,7 +75,9 @@ export default {
     },
     draw () {
       this.viz = new NeoVis(config)
+      // console.log('实例化成功')
       this.viz.render()
+      // console.log("渲染")
       // 点击完搜索全图之后 才能开启搜索功能
       this.isClicked = false
     }

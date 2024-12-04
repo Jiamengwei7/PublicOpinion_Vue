@@ -50,7 +50,13 @@ export default {
         function: { // everything here will map function thats gets the neo4j node properties to a vis.js node property
           // title: NeoVis.objectToTitleHtml, // alternativly
           label: (props) => (NeoVis.objectToTitleString(props, ['name'])).slice(5, 15) + '...',
-          image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
+          // image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
+          image: (props) => {
+            const result = /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])));
+            // console.log(Array.isArray(result))
+            // console.log('static/image-ourself/'+result);
+            return result && result.length > 0 ? 'static/image-ourself/'+result[0] : '';
+          }
         },
         static: { // everything here will be copied directly to the vis.js's node object
           font: {
@@ -254,15 +260,15 @@ export default {
   option: [
     {
       value: 'MATCH (n:entity) RETURN n LIMIT 300',
-      label: '检索前300个实体节点'
+      label: '检索文本节点'
     },
     {
       value: 'MATCH (n:sentence) RETURN n LIMIT 100',
-      label: '检索100个实体节点'
+      label: '检索图像节点'
     },
     {
       value: 'MATCH p = (s1:sentence)-[r]-() RETURN p LIMIT 100',
-      label: '检索前100个实体节点'
+      label: '隐性节点关系挖掘'
     }
   ]
 }

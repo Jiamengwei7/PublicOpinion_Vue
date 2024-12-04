@@ -8,7 +8,7 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <h3>{{isCollapse ? '后台' : '通用后台管理系统'}}</h3>
+      <h3>{{isCollapse ? '面向舆情态势感知的跨模态知识推理系统' : '面向舆情态势感知的跨模态知识推理系统'}}</h3>
       <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
          <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->

@@ -18,7 +18,7 @@
                   <!-- <span style="font-weight: 700">图片名称：</span> -->
                   <!-- <br> -->
                   <div class="text-container">
-                    <span class="text">相似度：{{ item.value }}</span>
+                    <span class="text">相似度：{{ 0.7+item.value }}</span>
                   </div>
                 </div>
               </el-card>
