@@ -4,7 +4,7 @@
       <el-button style="margin-right: 20px" @click="handleMenu" icon="el-icon-menu"></el-button>
       <!-- 面包屑 先完成面包屑的样式-->
       <el-breadcrumb separator="/">
-        <el-breadcrumb-item v-for="tab in tabsList" :key="tab.path" :to="{ path: tab.path }" >{{ tab.label }}</el-breadcrumb-item>
+        <!-- <el-breadcrumb-item v-for="tab in tabsList" :key="tab.path" :to="{ path: tab.path }" >{{ tab.label }}</el-breadcrumb-item> -->
       </el-breadcrumb>
     </div>
     <div class="r-content">

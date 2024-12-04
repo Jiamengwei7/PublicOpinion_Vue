@@ -24,14 +24,14 @@
               </el-form-item> -->
 
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
               <el-form-item class="btn">
                   <!-- <el-button :disabled="isClicked" type="primary" icon="el-icon-search" @click="submit">运行</el-button> -->
                   <!-- <el-button type="primary" icon="el-icon-check" @click="draw">获取样图</el-button> -->
                   <!-- <el-button type="primary" icon="el-icon-check" @click="stabilize">stabilize</el-button> -->
                   
-                  <el-button type="primary" @click="selectHalf">获取原图谱</el-button>
-                  <el-button type="primary" @click="selectAll">图谱隐性节点关系挖掘</el-button>
+                  <el-button type="primary" class="customBtn" @click="selectHalf">获取原图谱</el-button>
+                  <el-button type="primary" class="customBtn" @click="selectAll">图谱隐性节点关系挖掘</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -148,6 +148,9 @@ export default {
   }
 }
 
+.customBtn{
+  width: 200px;
+}
 .Food {
   font-size: 15px;
   color: #606266;
