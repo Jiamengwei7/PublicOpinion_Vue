@@ -53,9 +53,11 @@ export default {
           // image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
           image: (props) => {
             const result = /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])));
-            // console.log(Array.isArray(result))
-            // console.log('static/image-ourself/'+result);
-            return result && result.length > 0 ? 'static/image-ourself/'+result[0] : '';
+            if ( result && result.length > 0) {
+              let res = result[0].match(/"([^"]+)"/)[1];
+              return 'static/image-ourself/'+res;
+            }
+            return "";
           }
         },
         static: { // everything here will be copied directly to the vis.js's node object
