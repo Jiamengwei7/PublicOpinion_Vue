@@ -8,11 +8,13 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <h3>{{isCollapse ? '面向舆情态势感知的跨模态知识推理系统' : '面向舆情态势感知的跨模态知识推理系统'}}</h3>
+      <el-menu-item style='display:flex; justify-content: center'>
+         <img style='width: 50px; height: 50px;'  src='@/assets/logo2.png' />
+      </el-menu-item>
       <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
          <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
-        <span slot="title">{{ item.label }}</span>
+        <span class="label-size" slot="title">{{ item.label }}</span>
       </el-menu-item>
       <el-submenu v-for="item in hasChildren" :key="item.label" :index="item.label">
         <template v-slot:title>
@@ -100,5 +102,8 @@ export default {
     font-size: 16px;
     font-weight: 400;
   }
+}
+.label-size {
+  font-size:18px; 
 }
 </style>

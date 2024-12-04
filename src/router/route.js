@@ -9,7 +9,7 @@ const routes = [
     // 重定向 可以设置默认路径 也就是将根路径重定向到/home的路径下
     // 主路由的名字
     name: 'Main',
-    redirect: '/home',
+    redirect: '/dataset',
     children: [
       // 后端接口根据权限进入不同导航页面 mock接口返回
       //     {

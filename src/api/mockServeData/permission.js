@@ -4,7 +4,7 @@ export default {
     const { username, password } = JSON.parse(config.body)
     // 先判断用户是否存在
     // 判断账号和密码是否对应
-    if (username === 'admin' && password === 'admin') {
+    if (username === '段春雨' && password === '123456') {
       return {
         code: 20000,
         data: {
@@ -51,33 +51,6 @@ export default {
               icon: 's-home',
               url: 'knowledge/index.vue'
             },
-            {
-              label: '其他',
-              icon: 'location',
-              children: [
-                {
-                  path: '/page1',
-                  name: 'page1',
-                  label: '页面1',
-                  icon: 'setting',
-                  url: 'page/PageOne.vue'
-                },
-                {
-                  path: '/page2',
-                  name: 'page2',
-                  label: '页面2',
-                  icon: 'setting',
-                  url: 'page/PageTwo.vue'
-                },
-                {
-                  path: '/textEE',
-                  name: 'textEE',
-                  label: 'textEE',
-                  icon: 'setting',
-                  url: 'page/textEE.vue'
-                }
-              ]
-            }
           ],
           token: Mock.Random.guid(),
           message: '获取成功'

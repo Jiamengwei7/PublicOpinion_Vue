@@ -1,4 +1,5 @@
 <template>
+<div class="body">
   <div class="login-container">
     <h3 class="login-header">系统登录</h3>
     <!-- model 绑定的数据 -->
@@ -14,6 +15,7 @@
       </el-form-item>
     </el-form>
    </div>
+  </div>
 </template>
 
 <script>
@@ -63,7 +65,7 @@ export default {
               // 在跳转之前 要动态的注册路由 派发一个action 同时传入一个载荷
               this.$store.dispatch('addMenu', this.$router)
               // 跳转的时候push要响应式的读取menu
-              this.$router.push('/home')
+              this.$router.push('/dataset')
             } else {
               // 错误提示
               this.$message({
@@ -87,10 +89,22 @@ export default {
 </script>
 
 <style lang='less' scoped>
+.body {
+  display:flex;
+  background-image: url(@/assets/background.jpg);
+    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+    /* 设置背景颜色，背景图加载过程中会显示背景色 */
+    background-color: #464646;
+    background-size: cover;
+}
 .login-container {
   width: 350px;
+  height:400px;
   border:1px solid #eaeaea;
-  margin: 180px auto;
+  margin: 180px 200px auto auto;
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 0 25px #cac6c6;

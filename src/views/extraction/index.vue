@@ -22,7 +22,7 @@
             :file-list="fileList"
             style="margin-left: 40px"
           >
-            <el-button type="primary" style="height: 40px">上传图片</el-button>
+            <el-button type="primary" style="height: 40px">加载图片</el-button>
           </el-upload>
           <el-button type="primary" style="height: 40px; margin-left: 40px" @click="send"
             >开始抽取</el-button>
@@ -38,7 +38,6 @@
               <span class="text1">样本信息</span>
               <el-divider></el-divider>
               <div>
-                <!-- <el-divider></el-divider> -->
                 <div>
                   <span class="text" style="font-size: 16px">文本</span>
                   <span
