@@ -27,50 +27,48 @@
           <el-button type="primary" style="height: 40px; margin-left: 40px" @click="send"
             >开始抽取</el-button>
         </div>
-        <!-- <el-divider style="height: 30px;"></el-divider> -->
       </el-card>
     </div>
-    <div class="event-container">
-      <div class="event">
-        <div class="left-half" style="margin-right: 20px">
-          <div>
-            <el-card class="box-card1">
-              <span class="text1">样本信息</span>
-              <el-divider></el-divider>
-              <div>
-                <div>
-                  <span class="text" style="font-size: 16px">文本</span>
-                  <span
-                    class="text"
-                    style="margin-left: 20px; color: #99a9bf"
-                    >{{ input }}</span
-                  ><br />
-                </div>
-                <div style="margin-top: 18px">
-                  <span
-                    class="text"
-                    style="font-size: 16px; vertical-align: middle"
-                    >图片</span
-                  >
-                <img
-                v-for="file in fileList"
-                :key="file.name"
-                style="
-                  width: 80px;
-                  height: 80px;
-                  margin-left: 20px;
-                  vertical-align: middle;
-                "
-                :src="file.url"
-                :alt="file.name"
-              />
-                </div>
-              </div>
-            </el-card>
+    <div class="sample-container">
+      <div>
+        <el-card class="box-card1">
+          <span class="text1">事件样本信息</span>
+          <el-divider></el-divider>
+          <div style="display: flex">
+            <div style="width: 200px">
+              <span class="text" style="font-size: 16px">文本</span>
+              <span
+                class="text"
+                style="margin-left: 20px; color: #99a9bf"
+                >{{ input }}</span
+              ><br />
+            </div>
+            <div style="flex: 1">
+              <span
+                class="text"
+                style="font-size: 16px; vertical-align: middle"
+                >图片</span
+              >
+            <img
+            v-for="file in fileList"
+            :key="file.name"
+            style="
+              width: 80px;
+              height: 80px;
+              margin-left: 20px;
+              vertical-align: middle;
+            "
+            :src="file.url"
+            :alt="file.name"
+          />
+            </div>
           </div>
-
-          <div style="margin-top: 20px; height: 400px">
-            <el-card class="box-card1">
+        </el-card>
+      </div>
+    </div>
+    <div class="event-container">
+      <div class="left-half">
+        <el-card class="box-card1">
               <span class="text1">触发词信息</span>
               <el-divider></el-divider>
               <el-row>
@@ -86,18 +84,11 @@
                     <el-form-item label="事件类型">
                       <span>{{ content }}</span>
                     </el-form-item>
-                    <!-- <el-form-item
-                      label="事件类型描述"
-                      style="white-space: nowrap"
-                    >
-                      <span>it occurs when two or more people interact</span>
-                    </el-form-item> -->
                   </el-form>
                 </el-col>
               </el-row>
             </el-card>
-          </div>
-        </div>
+        </div> 
         <div class="right-half">
           <el-card class="box-card1">
             <span class="text1">论元信息</span>
@@ -277,6 +268,7 @@ export default {
 
 .text1 {
   font-size: 16px;
+  font-weight: bold;
 }
 
 .text {
@@ -302,7 +294,7 @@ export default {
 }
 
 .container {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
 }
 
@@ -311,7 +303,7 @@ export default {
 }
 
 .event-container {
-  flex: 1;
+  display: flex;
 }
 
 .event {
