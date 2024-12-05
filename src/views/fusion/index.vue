@@ -15,7 +15,7 @@
               <el-card :body-style="{ padding: '0px' }">
                 <div class="image-container">
                   <img :src="'./resources/Result/' + item.filePath" class="image">
-                  <span style="font-weight: 700">图片名称：</span>
+                  <!-- <span style="font-weight: 700">图片名称：</span> -->
                   <!-- <br> -->
                   <div class="text-container">
                     <span class="text">相似度：{{ item.value }}</span>
@@ -24,7 +24,7 @@
               </el-card>
             </el-col>
           </el-row>
-          <el-row v-else-if="filteredImages.length === 0 && input !== '' && search" style="margin-top: 20px;">
+          <el-row v-else-if="filteredImages.length === 0 && input !== '' && search && !loading" style="margin-top: 20px;">
             <div style="display: flex; flex-direction: column; align-items: center;">
               <div><img :src="'./resources/Result/nothing.png'" class="image"></div>
               <div style="margin-top: 10px;">未匹配到合适图片，请扩充图数据库！</div>
@@ -45,10 +45,14 @@ export default {
     return {
       input: '',
       search: false,
+      loading: false, // 加载状态
       images: [
-        { name: '战争画面', filePath: 'war_152_1.jpg', value: '0.897' }, { name: '战争', filePath: 'war_152_2.jpg', value: '0.797' }, { name: '战争', filePath: 'war_158_0.jpg', value: '0.879' }, { name: '战争', filePath: 'war_162_2.jpg', value: '0.865' }, { name: '战争', filePath: 'war_165_0.jpg', value: '0.679' }, { name: '战争', filePath: 'war_200_2.jpg', value: '0.865' }, { name: '战争', filePath: 'war_195_1.jpg', value: '0.786' }, { name: '战争', filePath: 'war_197_0.jpg', value: '0.754' }, { name: '战争', filePath: 'war_200_0.jpg', value: '0.897' },
-        { name: '前进的军队', filePath: 'war_153_2.jpg', value: '0.797' }, { name: '前进的军队', filePath: 'war_158_1.jpg', value: '0.678' }, { name: '前进的军队', filePath: 'war_165_1.jpg', value: '0.776' }, { name: '前进的军队', filePath: 'war_178_1.jpg', value: '0.758' }, { name: '前进的军队', filePath: 'war_185_2.jpg', value: '0.822' }, { name: '前进的军队', filePath: 'war_190_2.jpg', value: '0.798' }, { name: '前进的军队', filePath: 'war_193_1.jpg', value: '0.812' }, { name: '前进的军队', filePath: 'war_194_2.jpg', value: '0.811' }, { name: '前进的军队', filePath: 'war_195_0.jpg', value: '0.871' },
-        { name: '一群人在开会', filePath: 'war_166_0.jpg', value: '0.832' }, { name: '新闻发布会、会议、开会', filePath: 'war_170_1.jpg', value: '0.892' }, { name: '新闻发布会、会议、开会', filePath: 'war_170_2.jpg', value: '0.851' }, { name: '新闻发布会、会议、开会', filePath: 'war_171_0.jpg', value: '0.881' }, { name: '新闻发布会、会议、开会', filePath: 'war_171_1.jpg', value: '0.858' }, { name: '新闻发布会、会议、开会', filePath: 'war_171_2.jpg', value: '0.872' }, { name: '新闻发布会、会议、开会', filePath: 'war_173_1.jpg', value: '0.888' }, { name: '新闻发布会、会议、开会', filePath: 'war_174_1.jpg', value: '0.798' }, { name: '新闻发布会、会议、开会', filePath: 'war_174_2.jpg', value: '0.888' },
+        { name: '战争画面、打仗', filePath: 'war_152_1.jpg', value: '0.897' }, { name: '战争画面、打仗', filePath: 'war_152_2.jpg', value: '0.797' }, { name: '战争画面、打仗', filePath: 'war_158_0.jpg', value: '0.879' }, { name: '战争画面、打仗', filePath: 'war_162_2.jpg', value: '0.865' }, { name: '战争画面、打仗', filePath: 'war_165_0.jpg', value: '0.679' }, { name: '战争画面、打仗', filePath: 'war_200_2.jpg', value: '0.865' }, { name: '战争画面、打仗', filePath: 'war_195_1.jpg', value: '0.786' }, { name: '战争画面、打仗', filePath: 'war_197_0.jpg', value: '0.754' }, { name: '战争画面、打仗', filePath: 'war_200_0.jpg', value: '0.897' },
+        { name: '前进的军队、行进中的军队、战士们', filePath: 'war_153_2.jpg', value: '0.797' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_158_1.jpg', value: '0.678' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_165_1.jpg', value: '0.776' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_178_1.jpg', value: '0.758' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_185_2.jpg', value: '0.822' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_190_2.jpg', value: '0.798' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_193_1.jpg', value: '0.812' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_194_2.jpg', value: '0.811' }, { name: '前进的军队、行进中的军队、战士们', filePath: 'war_195_0.jpg', value: '0.871' },
+        { name: '一群人在开会、会议', filePath: 'war_166_0.jpg', value: '0.832' }, { name: '一群人在开会、会议', filePath: 'war_170_1.jpg', value: '0.892' }, { name: '一群人在开会、会议', filePath: 'war_170_2.jpg', value: '0.851' }, { name: '一群人在开会、会议', filePath: 'war_171_0.jpg', value: '0.881' }, { name: '一群人在开会、会议', filePath: 'war_171_1.jpg', value: '0.858' }, { name: '一群人在开会、会议', filePath: 'war_171_2.jpg', value: '0.872' }, { name: '一群人在开会、会议', filePath: 'war_173_1.jpg', value: '0.888' }, { name: '一群人在开会、会议', filePath: 'war_174_1.jpg', value: '0.798' }, { name: '一群人在开会、会议', filePath: 'war_174_2.jpg', value: '0.888' },
+        { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_0.jpg', value: '0.897' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_1.jpg', value: '0.797' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_2.jpg', value: '0.879' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_3.jpg', value: '0.865' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_4.jpg', value: '0.879' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_5.jpg', value: '0.865' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_6.jpg', value: '0.786' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_7.jpg', value: '0.754' }, { name: '医药创新研发、医药生产、医药研究', filePath: 'medicine_8.jpg', value: '0.897' },
+        { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_0.png', value: '0.812' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_1.png', value: '0.797' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_2.png', value: '0.809' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_3.png', value: '0.795' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_4.png', value: '0.779' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_5.png', value: '0.795' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_6.png', value: '0.816' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_7.png', value: '0.824' }, { name: '注射类药物、液体药物、液体药品', filePath: 'med_water_8.png', value: '0.817' },
+        { name: '医疗服务', filePath: 'med_service_0.jpg', value: '0.768' }, { name: '医疗服务', filePath: 'med_service_1.jpg', value: '0.717' }, { name: '医疗服务', filePath: 'med_service_2.jpg', value: '0.809' }, { name: '医疗服务', filePath: 'med_service_3.jpg', value: '0.795' }, { name: '医疗服务', filePath: 'med_service_4.jpg', value: '0.779' }, { name: '医疗服务', filePath: 'med_service_5.jpg', value: '0.795' }, { name: '医疗服务', filePath: 'med_service_6.jpg', value: '0.816' }, { name: '医疗服务', filePath: 'med_service_7.jpg', value: '0.804' }, { name: '医疗服务', filePath: 'med_service_8.jpg', value: '0.817' },
       ],
       filteredImages: [],
       result: []
@@ -99,13 +103,17 @@ export default {
         });
     },
     matchImages() {
+      this.loading = true; // 设置加载状态为 true
       if (this.input === '') {
         alert('请输入搜索内容');
         return;
       }
       this.search = true;
-      this.filteredImages = this.images.filter(item => item.name.includes(this.input));
-      this.filteredImages.sort((a, b) => parseFloat(b.value) - parseFloat(a.value)); 
+      setTimeout(() => {
+        this.filteredImages = this.images.filter(item => item.name.includes(this.input));
+        this.filteredImages.sort((a, b) => parseFloat(b.value) - parseFloat(a.value));
+        this.loading = false;
+      }, 2000);
     },
     resetSearch() {
       this.search = false;
