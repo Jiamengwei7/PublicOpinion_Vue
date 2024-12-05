@@ -255,6 +255,55 @@ export default {
     },
     trigger: {
       label: 'type'
+    },
+    LOC:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    ORG:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    PER:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Conflict_Attack:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Place:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Instrument:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Life_Injure:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
     }
   },
   arrows: true,

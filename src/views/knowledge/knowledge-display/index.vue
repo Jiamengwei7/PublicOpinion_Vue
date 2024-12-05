@@ -98,7 +98,7 @@ export default {
       this.viz.renderWithCypher(cypher)
     },
     selectAll () {
-      const cypher = 'MATCH p = (s1:sentence)-[r]-() RETURN p LIMIT 200'
+      const cypher = 'MATCH (n)-[r]->(m) RETURN n, r, m limit 150'
       this.viz.renderWithCypher(cypher)
     }
   }
