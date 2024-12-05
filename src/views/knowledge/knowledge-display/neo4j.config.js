@@ -53,9 +53,11 @@ export default {
           // image: (props) => 'static/image-ourself/' + /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])))[1]
           image: (props) => {
             const result = /"(.*?)"/.exec((NeoVis.objectToTitleString(props, ['image'])));
-            // console.log(Array.isArray(result))
-            // console.log('static/image-ourself/'+result);
-            return result && result.length > 0 ? 'static/image-ourself/'+result[0] : '';
+            if ( result && result.length > 0) {
+              let res = result[0].match(/"([^"]+)"/)[1];
+              return 'static/image-ourself/'+res;
+            }
+            return "";
           }
         },
         static: { // everything here will be copied directly to the vis.js's node object
@@ -253,6 +255,55 @@ export default {
     },
     trigger: {
       label: 'type'
+    },
+    LOC:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    ORG:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    PER:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Conflict_Attack:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Place:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Instrument:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
+    },
+    Life_Injure:{
+      label: 'name',
+      font: {
+        size: 26,
+        color: '#000000'
+      }
     }
   },
   arrows: true,

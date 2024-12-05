@@ -3,12 +3,13 @@
     <el-card class="box-card">
       <div class="myDiv">
         <el-row>
-            <p style="color:red;margin-left:20px;">！！！第一次进入页面请先点击获取样图按钮后，再进行搜索</p>
+            <!-- <p style="color:red;margin-left:20px;">！！！第一次进入页面请先点击获取样图按钮后，再进行搜索</p> -->
         </el-row>
         <el-form label-width="10%" :model="formInline" class="demo-form-inline">
           <el-row>
             <el-col :span="12">
-              <el-form-item label="Cypher:">
+              
+              <!-- <el-form-item label="Cypher:">
                 <el-select
                     style="width: 300px"
                     v-model="formInline.input"
@@ -20,14 +21,17 @@
                         :label="item.label"
                         :value="item.value"></el-option>
                 </el-select>
-                <!-- <el-input type="textarea" :rows="2" v-model="formInline.input" placeholder="请输入内容"></el-input> -->
-              </el-form-item>
+              </el-form-item> -->
+
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
               <el-form-item class="btn">
-                  <el-button :disabled="isClicked" type="primary" icon="el-icon-search" @click="submit">运行</el-button>
-                  <el-button type="primary" icon="el-icon-check" @click="draw">获取样图</el-button>
+                  <!-- <el-button :disabled="isClicked" type="primary" icon="el-icon-search" @click="submit">运行</el-button> -->
+                  <!-- <el-button type="primary" icon="el-icon-check" @click="draw">获取样图</el-button> -->
                   <!-- <el-button type="primary" icon="el-icon-check" @click="stabilize">stabilize</el-button> -->
+                  
+                  <el-button type="primary" class="customBtn" @click="selectHalf">获取原图谱</el-button>
+                  <el-button type="primary" class="customBtn" @click="selectAll">图谱隐性节点关系挖掘</el-button>
               </el-form-item>
             </el-col>
           </el-row>
@@ -60,26 +64,42 @@ export default {
   },
   mounted () {
     console.log(config.option)
+    // this.draw();
+    
+    this.viz = new NeoVis(config)
+    const cypher = 'MATCH p = (s1:sentence)-[r]-() RETURN p LIMIT 100'
+    this.viz.renderWithCypher(cypher)
   },
   methods: {
-    submit () {
-      const cypher = this.formInline.input
-      if (cypher.length > 3) {
-        this.viz.renderWithCypher(cypher)
-      } else {
-        this.viz.reload()
-      }
+    // submit () {
+    //   const cypher = this.formInline.input
+    //   console.log("----");
+    //   console.log(cypher)
+    //   if (cypher.length > 3) {
+    //     this.viz.renderWithCypher(cypher)
+    //   } else {
+    //     this.viz.reload()
+    //   }
+    // },
+    // stabilize () {
+    //   this.viz.stabilize()
+    // },
+    // draw () {
+    //   this.viz = new NeoVis(config)
+    //   // console.log('实例化成功')
+    //   this.viz.render()
+    //   // console.log("渲染")
+
+    //   // 点击完搜索全图之后 才能开启搜索功能
+    //   this.isClicked = false
+    // },
+    selectHalf () {
+      const cypher = 'MATCH p = (s1:sentence)-[r]-() RETURN p LIMIT 100'
+      this.viz.renderWithCypher(cypher)
     },
-    stabilize () {
-      this.viz.stabilize()
-    },
-    draw () {
-      this.viz = new NeoVis(config)
-      // console.log('实例化成功')
-      this.viz.render()
-      // console.log("渲染")
-      // 点击完搜索全图之后 才能开启搜索功能
-      this.isClicked = false
+    selectAll () {
+      const cypher = 'MATCH (n)-[r]->(m) RETURN n, r, m limit 150'
+      this.viz.renderWithCypher(cypher)
     }
   }
 }
@@ -128,6 +148,9 @@ export default {
   }
 }
 
+.customBtn{
+  width: 200px;
+}
 .Food {
   font-size: 15px;
   color: #606266;
