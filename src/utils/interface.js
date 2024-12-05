@@ -1,7 +1,11 @@
 import request from './request'
 
-// 获取服务端数据集数据
+// 获取服务端战争数据集数据
 export const getDataList = () => request.get('/getDataList')
+// 获取服务端医药数据集数据
+export const getDataList1 = () => request.get('/getDataList1')
+// 获取服务端数据交易所数据集数据
+export const getDataList2 = () => request.get('/getDataList2')
 
 // 发送
 export const sendEvent = (data) => {
