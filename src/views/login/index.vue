@@ -92,17 +92,15 @@ export default {
 .body {
   display:flex;
   background-image: url(@/assets/background.jpg);
-    /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
     background-repeat: repeat;
-    height: 100%;
+    height: 700px;
     width: 100%;
-    /* 设置背景颜色，背景图加载过程中会显示背景色 */
     background-color: #464646;
     background-size: cover;
 }
 .login-container {
   width: 350px;
-  height:400px;
+  height:300px;
   border:1px solid #eaeaea;
   margin: 180px 200px auto auto;
   border-radius: 15px;
