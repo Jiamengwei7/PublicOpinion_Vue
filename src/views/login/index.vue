@@ -93,7 +93,7 @@ export default {
   display:flex;
   background-image: url(@/assets/background.jpg);
     background-repeat: repeat;
-    height: 700px;
+    height: 910px;
     width: 100%;
     background-color: #464646;
     background-size: cover;
