@@ -53,8 +53,9 @@
 </template>
 
 <script>
-import axios from 'axios'
-const Fpath = 'http://localhost:5000'
+// import axios from 'axios'
+// const Fpath = 'https://172.20.137.248:5081'
+import { sendTextRelation } from '@/utils/interface'
 export default {
   name: 'my-relation',
   data () {
@@ -74,7 +75,8 @@ export default {
         return // 阻止继续执行后续逻辑
       }
       this.loading = true
-      axios.post(Fpath + '/process', { text1: this.inputText1, text2: this.inputText2, result: this.result, radio: this.radio })
+      sendTextRelation({ text1: this.inputText1, text2: this.inputText2, result: this.result, radio: this.radio })
+      // axios.post(Fpath + '/api/process', { text1: this.inputText1, text2: this.inputText2, result: this.result, radio: this.radio })
         .then(response => {
           console.log(response.data)
           this.result = response.data.relation
@@ -96,6 +98,9 @@ export default {
       //   .catch(error => {
       //     console.error(error)
       //   })
+      console.log(this)
+      console.log(this.$echarts)
+      // console.log(this.prototype.$echarts)
       const myChart = this.$echarts.init(document.getElementById('result'))
       const option = {
         tooltip: {
