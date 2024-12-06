@@ -65,7 +65,7 @@ export default {
       tableData: [],
       totalPage: {
         pageNum: 1,
-        pageSize: 12
+        pageSize: 10
       },
       currentType: 'war',
       dataTypes: [
