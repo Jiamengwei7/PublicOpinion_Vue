@@ -8,8 +8,8 @@ import router from './router'
 import store from './store'
 import App from './App.vue'
 import '@/api/mock'
-import echarts from 'echarts'
-Vue.prototype.$echarts = echarts
+import * as echarts from 'echarts'
+
 Vue.config.productionTip = false
 // 使用element的插件
 Vue.use(ElementUI)
@@ -21,6 +21,9 @@ new Vue({
     // 生命周期钩子函数
     // 调用那个action函数 问题1 并没有涉及state的更改 如果是普通函数会怎么样？怎么样调用，
     store.dispatch('addMenu', router)
+  },
+  mounted() {
+    Vue.prototype.$echarts = echarts
   },
   render: h => h(App)
 }).$mount('#app')
