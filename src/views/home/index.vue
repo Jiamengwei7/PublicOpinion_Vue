@@ -5,13 +5,13 @@
           <div class="user">
             <img src='@/assets/images/user.png'/>
             <div class="userInfo">
-                <p class="name">Admin</p>
+                <p class="name">段春雨</p>
                 <p class="access">超级管理员</p>
             </div>
           </div>
           <div class="login-info">
-            <p>上次登录的时间：<span>2021-7-19</span></p>
-            <p>上次登录的地点：<span>武汉</span></p>
+            <p>上次登录的时间：<span>2024-12-06</span></p>
+            <p>上次登录的地点：<span>上海</span></p>
           </div>
       </el-card>
 
