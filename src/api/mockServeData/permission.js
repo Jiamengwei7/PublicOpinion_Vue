@@ -38,18 +38,18 @@ export default {
               url: 'relation/index.vue'
             },
             {
-              path: '/fusion',
-              name: 'fusion', // 命名路由
-              label: '表征融合',
-              icon: 's-home',
-              url: 'fusion/index.vue'
-            },
-            {
               path: '/knowledge',
               name: 'knowledge', // 命名路由
               label: '知识图谱',
               icon: 's-home',
               url: 'knowledge/index.vue'
+            },
+            {
+              path: '/fusion',
+              name: 'fusion', // 命名路由
+              label: '表征融合',
+              icon: 's-home',
+              url: 'fusion/index.vue'
             },
           ],
           token: Mock.Random.guid(),
