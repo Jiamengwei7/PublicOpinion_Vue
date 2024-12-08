@@ -1,8 +1,11 @@
 <template>
 <div class="body">
+  <div class="content">     
+    <div class="title">
+    面向舆情态势感知的跨模态知识推理系统
+    </div>
   <div class="login-container">
     <h3 class="login-header">系统登录</h3>
-    <!-- model 绑定的数据 -->
     <el-form :model="form" :rules="rules" ref="form" label-width="70px">
       <el-form-item label="用户名" prop='username'>
         <el-input v-model="form.username" placeholder="请输入用户名"></el-input>
@@ -12,9 +15,11 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="sumbit" style="`margin-top:10px;" type="primary">登录</el-button>
+        <el-button style="`margin-top:10px; margin-left: 30px" >取消</el-button>
       </el-form-item>
     </el-form>
-   </div>
+</div>
+  </div>
   </div>
 </template>
 
@@ -92,17 +97,31 @@ export default {
 .body {
   display:flex;
   background-image: url(@/assets/background.jpg);
-    background-repeat: repeat;
-    height: 910px;
-    width: 100%;
-    background-color: #464646;
-    background-size: cover;
+  background-repeat: repeat;
+  height: 100vh;
+  width: 100vw;
+  background-color: #464646;
+  background-size: cover;
 }
+.title {
+  margin-left: 20px;  
+  font-family: 'STZhongsong', sans-serif; 
+  color: white; 
+  font-size: 38px; 
+  width: 480px;
+  text-align: center;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 1000vw;
+} 
 .login-container {
-  width: 350px;
-  height:300px;
   border:1px solid #eaeaea;
-  margin: 180px 200px auto auto;
+  margin-top: 20px ;
   border-radius: 15px;
   background-color: #fff;
   box-shadow: 0 0 25px #cac6c6;

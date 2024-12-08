@@ -2,7 +2,6 @@
   <div>
     <!-- 数据概览 -->
     <div class="container">
-      <div class="item">事件类别<br/>33种</div>
       <div class="item">
         <div class="dropdown-wrapper">
           <span class="label">数据来源：</span>
@@ -24,6 +23,7 @@
         </div>
       </div>
       <div class="item">数据量<br/>{{ tableData.length }}</div>
+      <div class="item">事件类别<br/>33种</div>
     </div>
     <el-table
       :data="tableData1"

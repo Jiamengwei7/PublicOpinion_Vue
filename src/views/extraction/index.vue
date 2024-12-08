@@ -3,9 +3,9 @@
     <div class="top">
       <el-card class="dataset">
         <div style="display: flex; align-items: center">
-          <div class="rounded-box">
+          <!-- <div class="rounded-box">
             <span>Data</span>
-          </div>
+          </div> -->
           <el-input
             v-model="input"
             placeholder="请输入事件的文本"
