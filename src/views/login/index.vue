@@ -70,7 +70,7 @@ export default {
               // 在跳转之前 要动态的注册路由 派发一个action 同时传入一个载荷
               this.$store.dispatch('addMenu', this.$router)
               // 跳转的时候push要响应式的读取menu
-              this.$router.push('/dataset')
+              this.$router.push('/home')
             } else {
               // 错误提示
               this.$message({
