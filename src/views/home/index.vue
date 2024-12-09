@@ -4,10 +4,12 @@
 <style  lang="less" scoped>
 .body {
     display:flex;
-    background-image: url(@/assets/index.png);
+    background-image: url(@/assets/home.png);
       background-repeat: no-repeat;
-      height: 80%;
+      height: 90%;
       width: 100%;
       background-size: contain;
+      background-position: center;
+      margin-top: 25px;
   }
 </style>
