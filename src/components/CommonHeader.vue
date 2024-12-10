@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div class="l-content">
-      <el-button style="margin-right: 20px" @click="handleMenu" icon="el-icon-menu"></el-button>
+      <!-- <el-button style="margin-right: 20px" @click="handleMenu" icon="el-icon-menu"></el-button> -->
       <!-- 面包屑 先完成面包屑的样式-->
       <el-breadcrumb separator="/">
         <!-- <el-breadcrumb-item v-for="tab in tabsList" :key="tab.path" :to="{ path: tab.path }" >{{ tab.label }}</el-breadcrumb-item> -->
@@ -57,7 +57,7 @@ export default {
 
 <style lang='less' scoped>
 .header-container{
-  background-color: #333;
+  background-color: #545c64;
   height: 60px;
   padding: 0 20px;
   display: flex;
