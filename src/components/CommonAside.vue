@@ -8,8 +8,8 @@
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
-      <el-menu-item style='display:flex; justify-content: center'>
-         <img style='width: 50px; height: 50px;'  src='@/assets/logo2.png' />
+      <el-menu-item style='display:flex; justify-content: center' class="logo">
+         <img style='width: 120px; height: 120px;'  src='@/assets/logo4.png' />
       </el-menu-item>
       <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.name" :index="item.name">
         <i :class="`el-icon-${item.icon}`"></i>
@@ -105,5 +105,8 @@ export default {
 }
 .label-size {
   font-size:18px; 
+}
+.logo{
+  height: 120px;
 }
 </style>

@@ -43,8 +43,8 @@ export default {
   name: 'my-relation',
   data () {
     return {
-      inputText1: '据联合国统计，今年有43000多名移民从利比亚<trigger>抵达</trigger>欧洲海岸，其中大多数来自撒哈拉以南非洲地区，预计今年春季和夏季移民过境人数将激增。',
-      inputText2: '国际移民组织估计，去年有超过25万移民<trigger>越过</trigger>利比亚-尼日尔边境。',
+      inputText1: '中新网伦敦7月1日，英国安全官员称有证据显示格拉斯哥机场遭燃烧汽车<trigger>撞击事件</trigger>是一起自杀式恐怖袭击事件',
+      inputText2: '警方称有五名旁观者在格拉斯哥机场袭击事件中<trigger>受伤</trigger>，但他们的伤势都不严重',
       result: [],
       radio: '3',
       loading: false
