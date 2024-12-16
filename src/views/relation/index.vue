@@ -1,53 +1,36 @@
 <template xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="input-section">
-            <div class="left-section" style="margin-right: 10px;">
-                <el-card>
+            <div class="top-section">
+                <el-card shadow="always">
                   <span> <i class="el-icon-edit"></i>  加载第一条事件文本:  </span><br/>
-                    <!-- <textarea v-model="inputText1" placeholder="输入文本" style="width: 400px; height: 200px;" rows="100%"></textarea> -->
-                    <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 2}" placeholder="输入文本"
+                    <el-input type="textarea" :autosize="{ minRows: 5, maxRows: 5}" placeholder="输入文本"
                         v-model="inputText1" style="margin-top: 20px;"  >
                     </el-input>
                 </el-card>
             </div>
-            <div class="right-section">
-                <el-card>
+            <div class="bottom-section" style="margin-top: 60px;">
+                <el-card shadow="always">
                     <span><i class="el-icon-edit"></i>  加载第二条事件文本:</span>
-                    <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 2}" placeholder="输入文本"
+                    <el-input type="textarea" :autosize="{ minRows: 5, maxRows: 5}" placeholder="输入文本"
                         v-model="inputText2" style="margin-top: 20px;">
                     </el-input>
                 </el-card>
             </div>
-        </div>
-        <div class="button-container" style="margin-top: 20px;">
+                  <div class="button-container" style="margin-top: 40px;">
             <div class="button-section" style="margin-right: 20px;">
                 <el-button type="primary" round @click="sendText" v-loading="loading"
-    element-loading-text="后台加载中"
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="rgba(0, 0, 0, 0.8)">发送<i class="el-icon-upload2 el-icon--right"></i></el-button>
+                element-loading-text="后台加载中"
+                element-loading-spinner="el-icon-loading"
+                element-loading-background="rgba(0, 0, 0, 0.8)">发送<i class="el-icon-upload2 el-icon--right"></i></el-button>
             </div>
             <div class="button-section">
                 <el-button type="primary" round @click="runMethod">运行<i class="el-icon-download el-icon--right"></i></el-button>
             </div>
         </div>
-<!--        <div class="result-section" style="margin-top: 20px; height: 200px;">-->
-<!--            <el-card style="height: 100%;">-->
-<!--                <span>两个事件之间的关系为:</span> <br/> <br/>-->
-<!--                <el-radio-group v-model="radio">-->
-<!--                  <el-radio :label="0"><b><el-tag>因果关系 CAUSAL</el-tag></b></el-radio>-->
-<!--                  <el-radio :label="1"><b><el-tag type="success">时序/父子关系 FOLLOW</el-tag></b></el-radio>-->
-<!--                  <el-radio :label="2"><b><el-tag type="info">无关关系 NORELATION</el-tag></b></el-radio>-->
-<!--                </el-radio-group>-->
-<!--&lt;!&ndash;                <p>{{ result }}</p>&ndash;&gt;-->
-<!--            </el-card>-->
-<!--        </div>-->
-        <div class="Echarts" >
-          <div class="result-left" style="margin-left: 20px;margin-top: 30px" align="center" >
-            <div id="result" style="width: 700px;height:400px;"></div>
-          </div>
-<!--          <div class="result-right">-->
-<!--            <div id="result-text" style="width: 600px;height:400px;"></div>-->
-<!--          </div>-->
+        </div>
+        <div class="Echarts" id="echarts" >
+            <div id="result" style="width: 800px;height:420px;" ></div>
         </div>
     </div>
 </template>
@@ -108,8 +91,7 @@ export default {
         },
         legend: {
           orient: 'vertical',
-          x: 'left', // 可设定图例在左、右、居中
-          y: 'center' // 可设定图例在上、下、居中
+          x: 'right' // 可设定图例在左、右、居中
         },
         series: [
           {
@@ -219,25 +201,18 @@ export default {
 </script>
 
 <style>
+    .container {
+      display: flex;
+    }
     .input-section {
-       display: flex;
+       width: 50vw;
     }
-
-    .left-section {
-        flex: 1;
-    }
-
-    .right-section {
-        flex: 1;
-    }
-
-    .result-left{
+    .Echarts {
       flex: 1;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
     }
-
-    /*.result-right{*/
-    /*  flex: 1;*/
-    /*}*/
 
     .button-container {
         display: flex;
@@ -247,39 +222,22 @@ export default {
     .button-section {
         display: flex;
     }
-    /*.Echarts{*/
-    /*    display: flex;*/
-    /*}*/
 
-      .el-radio__input.is-checked .el-radio__inner {
-        border-color: #424346;
-        background-color: #424346;
-      }
-      .el-radio__input.is-checked + .el-radio__label {
-        color: #424346;
-      }
-      .el-radio__input.is-checked .el-radio__inner:after {
-        transform: rotate(45deg) scaleY(1);
-      }
-      .el-radio__label {
-        color: #80838a;
-      }
-      .el-radio__inner::after {
-        box-sizing: content-box;
-        content: "";
-        border: 1px solid #fff;
-        border-left: 0;
-        border-top: 0;
-        height: 7px;
-        left: 4px;
-        position: absolute;
-        top: 1px;
-        transform: rotate(45deg) scaleY(0);
-        width: 3px;
-        transition: transform 0.15s ease-in 0.05s;
-        transform-origin: center;
-        border-radius: unset;
-        background-color: transparent;
-      }
+    ::-webkit-scrollbar {
+        width: 12px; /*滚动条宽度*/
+        height: 12px; /*滚动条高度*/
+    }
+    .el-textarea__inner::-webkit-scrollbar-thumb {
+        background-color: rgba(168, 168, 168,.4);/*滚动条默认显示的颜色*/
+    }
+    .el-textarea__inner::-webkit-scrollbar {
+         width: 12px;
+         height: 12px;
+         background-color: white;/*滚动条背景色显示的颜色*/
+    }
+    .el-textarea__inner{
+      background-color: #f2f2f2;
+      border: 1px solid #1296db;
+    }
 
 </style>
