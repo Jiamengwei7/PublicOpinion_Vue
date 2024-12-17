@@ -29,8 +29,8 @@
             </div>
         </div>
         </div>
-        <div class="Echarts" id="echarts" >
-            <div id="result" style="width: 800px;height:420px;" ></div>
+        <div class="Echarts">
+            <div id="result" style="width: 800px; height:420px;" ></div>
         </div>
     </div>
 </template>
@@ -200,9 +200,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .container {
       display: flex;
+      flex-direction: row;
+      /* width: 90vw; */
+      width: 100%;
     }
     .input-section {
        width: 50vw;

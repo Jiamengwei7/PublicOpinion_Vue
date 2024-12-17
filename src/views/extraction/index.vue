@@ -232,7 +232,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .rounded-box {
   height: 40px;
   width: 40px;
