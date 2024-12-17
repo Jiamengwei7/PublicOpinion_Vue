@@ -24,9 +24,9 @@
                 element-loading-spinner="el-icon-loading"
                 element-loading-background="rgba(0, 0, 0, 0.8)">发送<i class="el-icon-upload2 el-icon--right"></i></el-button>
             </div>
-            <div class="button-section">
+            <!-- <div class="button-section">
                 <el-button type="primary" round @click="runMethod">运行<i class="el-icon-download el-icon--right"></i></el-button>
-            </div>
+            </div> -->
         </div>
         </div>
         <div class="Echarts">
@@ -66,135 +66,62 @@ export default {
           console.log(this.result)
           this.loading = false
           this.radio = parseInt(response.data.radio)
-        })
+          console.log(this)
+          console.log(this.$echarts)
+          const myChart = this.$echarts.init(document.getElementById('result'))
+          const option = {
+            tooltip: {
+              trigger: 'item'
+            },
+            legend: {
+              orient: 'vertical',
+              x: 'right' // 可设定图例在左、右、居中
+            },
+            series: [
+              {
+                name: '事件关系概率分布',
+                type: 'pie',
+                label: {
+                  show: true,
+                  // position: "putside",
+                  formatter: '{b} {d}%',
+                  fontSize: 16
+                },
+                emphasis: null,
+                labelLine: {
+                  show: true,
+                  length: 40
+                },
+                data: this.result
+              },
+              {
+                name: '事件关系概率分布',
+                type: 'pie',
+                label: {
+                  show: true,
+                  // position: 'inside',
+                  formatter: '{d}%'
+                },
+                labelLine: {
+                  show: false
+                },
+                emphasis: {
+                  label: {
+                    show: true,
+                    fontSize: 16,
+                    fontWeight: 'bold'
+                  }
+                },
+                data: this.result
+              }
+            ]
+          }
+          myChart.setOption(option)
+            })
         .catch(error => {
           console.log('连接失败')
           console.error(error)
         })
-    },
-    runMethod () {
-      // axios.get(Fpath + '/result').then(response => {
-      //   this.result = response.data.relation
-      //   this.radio = parseInt(response.data.radio)
-      //   console.log(typeof this.result)
-      // })
-      //   .catch(error => {
-      //     console.error(error)
-      //   })
-      console.log(this)
-      console.log(this.$echarts)
-      // console.log(this.prototype.$echarts)
-      const myChart = this.$echarts.init(document.getElementById('result'))
-      const option = {
-        tooltip: {
-          trigger: 'item'
-        },
-        legend: {
-          orient: 'vertical',
-          x: 'right' // 可设定图例在左、右、居中
-        },
-        series: [
-          {
-            name: '事件关系概率分布',
-            type: 'pie',
-            label: {
-              show: true,
-              // position: "putside",
-              formatter: '{b} {d}%',
-              fontSize: 16
-            },
-            emphasis: null,
-            labelLine: {
-              show: true,
-              length: 40
-            },
-            data: this.result
-          },
-          {
-            name: '事件关系概率分布',
-            type: 'pie',
-            label: {
-              show: true,
-              // position: 'inside',
-              formatter: '{d}%'
-            },
-            labelLine: {
-              show: false
-            },
-            emphasis: {
-              label: {
-                show: true,
-                fontSize: 16,
-                fontWeight: 'bold'
-              }
-            },
-            data: this.result
-          }
-        ]
-      }
-      // const resultGraph = this.$echarts.init(document.getElementById('result-text'))
-      // const graphOption = {
-      //   series: [{
-      //     type: 'graph', // 类型:关系图
-      //     layout: 'force', // 图的布局，类型为力导图
-      //     symbolSize: 40, // 调整节点的大小
-      //     roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
-      //     edgeSymbol: ['circle', 'arrow'],
-      //     edgeSymbolSize: [2, 10],
-      //     // edgeLabel: {
-      //     //   normal: {
-      //     //     textStyle: {
-      //     //       fontSize: 20
-      //     //     }
-      //     //   }
-      //     // },
-      //     force: {
-      //       repulsion: 2500,
-      //       edgeLength: [10, 50]
-      //     },
-      //     draggable: true,
-      //     lineStyle: {
-      //       normal: {
-      //         width: 2,
-      //         color: '#4b565b'
-      //       }
-      //     },
-      //     edgeLabel: {
-      //       normal: {
-      //         show: true,
-      //         formatter: function (x) {
-      //           return x.data.name
-      //         }
-      //       }
-      //     },
-      //     label: {
-      //       normal: {
-      //         show: true,
-      //         textStyle: {}
-      //       }
-      //     },
-      //
-      //     // 数据
-      //     data: [{
-      //       name: 'node01',
-      //       des: 'nodedes01',
-      //       symbolSize: 50
-      //     }, {
-      //       name: 'node02',
-      //       des: 'nodedes02',
-      //       symbolSize: 50
-      //     }],
-      //     links: [{
-      //       source: 'node01',
-      //       target: 'node02',
-      //       name: '因果',
-      //       des: 'link01des'
-      //     }]
-      //   }]
-      // }
-      //
-      // resultGraph.setOption(graphOption)
-      myChart.setOption(option)
     }
   }
 }
